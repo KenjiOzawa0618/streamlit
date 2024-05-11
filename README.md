@@ -1,2 +1,7 @@
 # 金価格可視化アプリ
-[Gold_Chart_App_Update](https://app-q3w2knpt8tgkc54hgmnxpi.streamlit.app)
+## [Gold_Chart_App_Update](https://app-q3w2knpt8tgkc54hgmnxpi.streamlit.app)<br><br>
+
+### アプリの概要
+このアプリは金の価格を可視化できるアプリです。自分の購入日を入力することで、購入日の価格と現在の価格との差を利益として表示します。
+また、現在までの金の価格変動をグラフでも表示します。購入日には赤い丸でマークが自動的に付けられる仕様になっています。
+グラフの表示期間と価格の範囲は細かく決めることができます。
