@@ -92,8 +92,7 @@ st.sidebar.write(f"""### USD/JPYレートを入力してください""")
 exchange_rate = st.sidebar.number_input("数値を入力してください（半角）",value= 150.0)
 
 
-purchase_date = st.sidebar.date_input("購入日を入力してください", value=pd.to_datetime("2023-09-08"),
-                                        min_value=pd.to_datetime("2000-01-01"),max_value=datetime.now())
+purchase_date = st.sidebar.date_input("購入日を入力してください", min_value=pd.to_datetime("2000-01-01"),max_value=datetime.now())
 
 gold_price_purchase = get_price_on_date(purchase_date.strftime("%Y-%m-%d"))
 gold_price_jpy_purchase = round((gold_price_purchase / 31.1035) * exchange_rate, 2) if gold_price_purchase else None
