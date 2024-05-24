@@ -43,7 +43,7 @@ def get_data(date, exchange_rate):
     if option == "year":
         hist = gold.history(period =f"{date}y")
     #使用データを終値のみを使用
-    hist.index = hist.index.strftime("%Y-%m-%d")
+    hist.index = hist.index.map(lambda x: x.strftime("%Y-%m-%d"))
     hist = hist[['Close']]
     hist = (hist/31.1035) * exchange_rate
     hist = round(hist, 2)
