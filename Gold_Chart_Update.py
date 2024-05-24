@@ -61,6 +61,7 @@ def get_price_on_date(date):
     try:
         return data.loc[date_str]['Close']
     except KeyError:
+        st.write(f"#### ※入力された購入日は金の価格が取得できません。近い日付をご選択ください。")
         return None
     
 def get_price_on_latest_date(date):
