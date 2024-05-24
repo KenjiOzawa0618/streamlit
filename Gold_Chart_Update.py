@@ -57,14 +57,17 @@ def get_data(date, exchange_rate):
 
 def get_price_on_date(date):
     gold = yf.Ticker("GC=F")
-    data = gold.history(period="24y")
+    data = gold.history(period="max")
     date_str = pd.to_datetime(date).strftime('%Y-%m-%d')
         # 指定された日付で終値を直接返す
-    return data.loc[date_str]['Close']    
-
+    try:
+        return data.loc[date_str]['Close']
+    except KeyError:
+        return None
+    
 def get_price_on_latest_date(date):
     gold = yf.Ticker("GC=F")
-    data = gold.history(period="24y")
+    data = gold.history(period="max")
     date_str = pd.to_datetime(date).strftime('%Y-%m-%d')
     try:
         # 指定された日付で終値を直接返す
