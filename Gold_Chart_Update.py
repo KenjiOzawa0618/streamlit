@@ -17,11 +17,11 @@ option = st.sidebar.radio(
 )
 if option == "day":
     #1～50，デフォルト20
-    date = st.sidebar.slider("範囲を指定してください",1,100,10)
+    date = st.sidebar.slider("範囲を指定してください",1,5,1)
     st.write(f"""### 過去 **{date}日間**の金価格""")
 if option == "month":
     #1～50，デフォルト20
-    date = st.sidebar.slider("範囲を指定してください",1,6,1)
+    date = st.sidebar.slider("範囲を指定してください",1,12,1)
     st.write(f"""### 過去 **{date}月間**の金価格""")
 if option == "year":
     #1～50，デフォルト20
