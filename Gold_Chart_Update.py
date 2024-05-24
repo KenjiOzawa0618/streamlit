@@ -59,8 +59,14 @@ def get_price_on_date(date):
     gold = yf.Ticker("GC=F")
     data = gold.history(period="100y")
     date_str = pd.to_datetime(date).strftime('%Y-%m-%d')
+    latest_date = data.last_valid_index().strftime('%Y-%m-%d')
+    try:
         # 指定された日付で終値を直接返す
-    return data.loc[date_str]['Close']    
+        return data.loc[date_str]['Close']  
+    except KeyError:
+        # 指定された日付のデータがなければ、Noneを返す
+        st.write(f"### 入力された購入日は金の価格が取得できません。近くの別の日付を選択ください。")
+        return None
 
 def get_price_on_latest_date(date):
     gold = yf.Ticker("GC=F")
@@ -92,7 +98,7 @@ st.sidebar.write(f"""### USD/JPYレートを入力してください""")
 exchange_rate = st.sidebar.number_input("数値を入力してください（半角）",value= 150.0)
 
 
-purchase_date = st.sidebar.date_input("購入日を入力してください", min_value=pd.to_datetime("2000-01-01"),max_value=datetime.now())
+purchase_date = st.sidebar.date_input("購入日を入力してください", value=pd.to_datetime("2023-09-08"),min_value=pd.to_datetime("2000-01-01"),max_value=datetime.now())
 
 gold_price_purchase = get_price_on_date(purchase_date.strftime("%Y-%m-%d"))
 gold_price_jpy_purchase = round((gold_price_purchase / 31.1035) * exchange_rate, 2) if gold_price_purchase else None
