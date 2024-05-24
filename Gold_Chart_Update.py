@@ -138,6 +138,10 @@ try:
         st.altair_chart(chart+highlight, use_container_width=True)
     else:
         st.altair_chart(chart, use_container_width=True)
+        
+    st.sidebar.write(f""" (購入日：{purchase_date} ￥{gold_price_jpy_purchase})""")
+    st.sidebar.write(f""" (最新：{latest_date} ￥{gold_price_jpy_latest})""")
+
 
 
 except:
@@ -145,6 +149,4 @@ except:
         "何かエラーが起きています"
     )
 
-st.sidebar.write(f""" (購入日：{purchase_date} ￥{gold_price_jpy_purchase})""")
-st.sidebar.write(f""" (最新：{latest_date} ￥{gold_price_jpy_latest})""")
-
+    
