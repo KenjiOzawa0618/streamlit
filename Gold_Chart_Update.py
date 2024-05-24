@@ -25,7 +25,7 @@ if option == "month":
     st.write(f"""### 過去 **{date}月間**の金価格""")
 if option == "year":
     #1～50，デフォルト20
-    date = st.sidebar.slider("範囲を指定してください",1,24,24)
+    date = st.sidebar.slider("範囲を指定してください",1,10,1)
     st.write(f"""### 過去 **{date}年間**の金価格""")
 
 
